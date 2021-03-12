@@ -4,11 +4,12 @@ import java.util.Scanner;
 
 public class Player {
     //firstname, lastname, age, team(første eller andet hold).
+
     private String firstname;
     private String lastname;
     private int age;
     private int team;
-    Scanner scanner = new Scanner(System.in);
+
     UserInput userInput = new UserInput();
     Player(){
 

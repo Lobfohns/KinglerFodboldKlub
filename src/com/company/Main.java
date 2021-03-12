@@ -5,6 +5,7 @@ public class Main {
     public static void main(String[] args) {
 	// menu
         UserInput userInput = new UserInput();
+        JDBCWriter jdbcWriter = new JDBCWriter();
         boolean run = true;
         int menuChoice;
         String headertext = "Fodbold club??";
@@ -29,8 +30,14 @@ public class Main {
                     System.out.println("Halløjsa");
                     break;
                 case 4:
-
+                    break;
                 case 5:
+                    break;
+                case 6:
+                    // Connect to db LAV DET HER OM TIL LOGIN ?
+                    String username = userInput.inputString("Please enter username",false);
+                    String password = userInput.inputString("Please enter password",false);
+                    boolean con = jdbcWriter.setConnection(username,password);
 
                 case 9: //Luk
                     run = false;
