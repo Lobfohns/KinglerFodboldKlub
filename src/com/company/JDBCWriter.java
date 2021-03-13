@@ -104,6 +104,40 @@ public class JDBCWriter {
     return player;
     }
 
+    // FIX DEN HER LALALALA
+    public void returnAllPlayers(){
+        //void skal ændres til LISTTYPE
+        //LAV LINKED LIST OG RETURN DEN!
+        PreparedStatement preparedStatement;
+        String selectStr = "SELECT * FROM players";
+
+        try{
+
+            preparedStatement = connection.prepareStatement(selectStr);
+            ResultSet resultSet =preparedStatement.executeQuery();
+            while (resultSet.next()){
+                Player player = new Player();
+                int playerid =resultSet.getInt("player_id");
+                String first_name = resultSet.getString("first_name");
+                String last_name = resultSet.getString("last_name");
+                int age = resultSet.getInt("age");
+                int team = resultSet.getInt("team");
+
+                player.setFirstname(first_name);
+                player.setLastname(last_name);
+                player.setAge(age);
+                player.setTeam(team);
+                // LAV MIG player.setPlayer_ID(playerid);
+                // LISTE.add(player)
+            }
+
+
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+
+    }
+
 
     public int updatePlayer(int player_id, Player player){
 
