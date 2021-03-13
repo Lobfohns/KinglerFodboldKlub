@@ -9,6 +9,16 @@ public class Player {
     private String lastname;
     private int age;
     private int team;
+    private int playerid;
+
+    public int getPlayerid() {
+        return playerid;
+    }
+
+    public void setPlayerid(int playerid) {
+        this.playerid = playerid;
+    }
+
 
     UserInput userInput = new UserInput();
     Player(){
@@ -54,13 +64,14 @@ public class Player {
     public int getTeam() {
         return team;
     }
-    public void createPlayer(){
+
+    public Player createPlayer(){
         String firstname = userInput.inputString("Input first name",true);
         String lastname = userInput.inputString("Input last name",true);
         int age = userInput.inputInt("Input age");
         int team = userInput.inputInt(1,2, "Input team");
         Player player = new Player(firstname, lastname, age, team);
-
+        return player;
 
 }
 

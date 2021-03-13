@@ -1,20 +1,20 @@
 package com.company;
 
-public class Node {
+public class Node<E> {
 
-    int data;
-    Node next;
+    E data;
+    Node<E> next;
     Node prev;
 
-    //LinkNode nodeA = new LinkNode(data);
-    //LinkNode nodeB = new LinkNode(data);
+    //Node nodeA = new LinkNode(data);
+    //Node nodeB = new LinkNode(data);
     //nodeA.next = nodeB    forbinder to noder, da deres next er NULL på denne constructor.
 
     Node(){
 
     }
 
-    Node(int data){
+    Node(E data){
         this.data=data;
     }
 

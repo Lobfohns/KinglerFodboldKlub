@@ -1,12 +1,12 @@
 package com.company;
 
-public class LinkedList {
+public class LinkedList<E> {
 
     // EVT LED EFTER MEDLEMMER VED AT PUTTE ALLE DERES ID'ER IND I LISTEN ??? DNU IM TIRED
 
-    Node head;
+    Node<E> head;
 
-    public void insert(int data){
+    public void insertAtEnd(E data){
         Node node = new Node();
         node.data = data;
         node.next = null; // default, men læsbart sådan her.
@@ -73,7 +73,7 @@ public class LinkedList {
         }
     }
 
-    public void deleteLastData(int value){
+    public void deleteLastData(E value){
         if (head.next != null){
             Node n = head; // vores pointer eller current..
             Node spot = null; // bruges til at
@@ -102,31 +102,39 @@ public class LinkedList {
     }
 
     // FORLÆNGET med en getter ved index..
-    public int getAtIndex(int index) {
+    public Object getAtIndex(int index) {
         return nodeAt(index).data;
     }
 
     //returnerer indexet på første gang en værdi findes i listen.. dnu hvorfor den er her.
-    public int indexOfFirstAppearance(int value){
+    /*public int indexOfFirstAppearance(String word){
+        Player player = new Player();
         int index=0;
         Node n = head; // n eller CURRENT...
         while (n.next != null){
-            if (n.data == value) {
+            if (n.data == word {
                 return index;
             }
             index++;
             n = n.next;
         }
-        return -1;
+        return index;
     }
+    */
+
 
     public void show(){
         Node node = head;
+        int count = 1;
         while (node.next != null){
-            System.out.println(node.data);
+            System.out.print(count + ". ");
+            System.out.print(node.data);
+            System.out.println();
             node=node.next;
+            count++;
         }
-        System.out.println(node.data); // tager den sidste med, da den sidste node har en NULL værdi..
+        System.out.println(count + ". ");
+        System.out.print(node.data); // tager den sidste med, da den sidste node har en NULL værdi..
     }
 
     // Returnerer antal elementer i liste.
@@ -141,6 +149,8 @@ public class LinkedList {
     return count;
     }
 
+
+
     public String toString(){
         if (head == null){
             return "[]";
@@ -153,6 +163,14 @@ public class LinkedList {
             }
             return result;
             }
+    }
+    //Vi laver en metode som har en parameter som er en liste af spillere. Linkedlist af spillere. 
+    public Node nodeAtTo(int index){
+        Node n = head; // vores peger eller CURRENT...
+        for (int i = 0; i<index;i++) {
+            n = n.next;
+        }
+        return n;
     }
 
 

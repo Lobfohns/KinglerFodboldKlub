@@ -8,7 +8,7 @@ public class JDBCWriter {
 
     public boolean setConnection(String username, String password) {
 
-        final String url = "jdbc:mysql://127.0.0.1:3306/kailuacarrental?serverTimezone=UTC";
+        final String url = "jdbc:mysql://127.0.0.1:3306/footkinglerball?serverTimezone=UTC";
         boolean bres = false;
 
         try {
@@ -105,9 +105,10 @@ public class JDBCWriter {
     }
 
     // FIX DEN HER LALALALA
-    public void returnAllPlayers(){
+    public LinkedList returnAllPlayers(){
         //void skal ændres til LISTTYPE
         //LAV LINKED LIST OG RETURN DEN!
+        LinkedList linkedList = new LinkedList();
         PreparedStatement preparedStatement;
         String selectStr = "SELECT * FROM players";
 
@@ -117,9 +118,9 @@ public class JDBCWriter {
             ResultSet resultSet =preparedStatement.executeQuery();
             while (resultSet.next()){
                 Player player = new Player();
-                int playerid =resultSet.getInt("player_id");
-                String first_name = resultSet.getString("first_name");
-                String last_name = resultSet.getString("last_name");
+                int playerid =resultSet.getInt("playerid");
+                String first_name = resultSet.getString("firstname");
+                String last_name = resultSet.getString("lastname");
                 int age = resultSet.getInt("age");
                 int team = resultSet.getInt("team");
 
@@ -127,15 +128,15 @@ public class JDBCWriter {
                 player.setLastname(last_name);
                 player.setAge(age);
                 player.setTeam(team);
-                // LAV MIG player.setPlayer_ID(playerid);
-                // LISTE.add(player)
+                player.setPlayerid(playerid);
+                linkedList.insertAtEnd(player);
             }
 
 
         } catch (SQLException e){
             e.printStackTrace();
         }
-
+                return linkedList;
     }
 
 

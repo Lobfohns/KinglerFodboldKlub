@@ -1,11 +1,16 @@
 package com.company;
 
 public class Main {
+    static UserInput userInput = new UserInput();
 
     public static void main(String[] args) {
 	// menu
-        UserInput userInput = new UserInput();
+        String username = "ludvig";
+        String password = "789bog";
         JDBCWriter jdbcWriter = new JDBCWriter();
+        boolean con = jdbcWriter.setConnection(username,password);
+        UserInput userInput = new UserInput();
+        LinkedList linkedlist = new LinkedList();
         boolean run = true;
         int menuChoice;
         String headertext = "Fodbold club??";
@@ -19,26 +24,27 @@ public class Main {
             menuChoice = userInput.inputInt(leadtext);
             switch (menuChoice){
                 case 1:
-                    Player player = new Player();
-                    player.createPlayer();
+                    Player player;
+                    player = createPlayer();
                     System.out.println(player.toString());
+                    linkedlist.insertAtEnd(player);
+                    System.out.println(linkedlist.toString());
+                    linkedlist.countOfElements();
+                    System.out.println(linkedlist.countOfElements());
+
                     break;
                 case 2:
-                    System.out.println("Davs");
+                    LinkedList list = jdbcWriter.returnAllPlayers();
+                    list.show();
                     break;
                 case 3:
                     System.out.println("Halløjsa");
                     break;
                 case 4:
+
                     break;
                 case 5:
                     break;
-                case 6:
-                    // Connect to db LAV DET HER OM TIL LOGIN ?
-                    String username = userInput.inputString("Please enter username",false);
-                    String password = userInput.inputString("Please enter password",false);
-                    boolean con = jdbcWriter.setConnection(username,password);
-
                 case 9: //Luk
                     run = false;
                     break;
@@ -46,4 +52,14 @@ public class Main {
             }
         }
     }
+    public static Player createPlayer(){
+        String firstname = userInput.inputString("Input first name",true);
+        String lastname = userInput.inputString("Input last name",true);
+        int age = userInput.inputInt("Input age");
+        int team = userInput.inputInt(1,2, "Input team");
+        Player player = new Player(firstname, lastname, age, team);
+        return player;
+
+    }
 }
+
