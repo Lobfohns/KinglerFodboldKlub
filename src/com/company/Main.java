@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.Scanner;
+
 public class Main {
     static UserInput userInput = new UserInput();
 
@@ -13,7 +15,7 @@ public class Main {
         LinkedList linkedlist = new LinkedList();
         boolean run = true;
         int menuChoice;
-        String headertext = "Fodbold club??";
+        String headertext = "Kingler fodbold klub";
         String leadtext = "Indtast en valgmulighed: ";
         String[] menuitems = {"1. create new player", "2. list all players",
                 "3. search for a player","4. delete a player", "5. search for players", "9. Exit"};
@@ -41,7 +43,8 @@ public class Main {
                     System.out.println("Halløjsa");
                     break;
                 case 4:
-
+                    int playerid = userInput.inputInt("Write playerid to delete");
+                    jdbcWriter.deletePlayer(playerid);
                     break;
                 case 5:
                     break;

@@ -133,7 +133,7 @@ public class LinkedList<E> {
             node=node.next;
             count++;
         }
-        System.out.println(count + ". ");
+        System.out.print(count + ". ");
         System.out.print(node.data); // tager den sidste med, da den sidste node har en NULL værdi..
     }
 

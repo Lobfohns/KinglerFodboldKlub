@@ -138,6 +138,20 @@ public class JDBCWriter {
         }
                 return linkedList;
     }
+    public int deletePlayer(int playerid){
+        String delQuery = "DELETE from players where playerid = ?";
+        PreparedStatement preparedStatement;
+        int result = -1;
+
+        try {
+            preparedStatement = connection.prepareStatement(delQuery);
+            preparedStatement.setInt(1,playerid);
+            result = preparedStatement.executeUpdate();
+        } catch(SQLException err) {
+            err.printStackTrace();
+        }
+        return result;
+    }
 
 
     public int updatePlayer(int player_id, Player player){
